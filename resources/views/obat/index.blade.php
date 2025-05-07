@@ -7,9 +7,9 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class=overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <a href="{{ route('jenis-obat.create') }}" class="inline-block bg-green-500 text-black px-4 py-2 rounded mb-4 hover:bg-green-600">Tambah Jenis Obat</a>
+                    <a href="{{ route('obat.create') }}" class="inline-block bg-green-500 text-black px-4 py-2 rounded mb-4 hover:bg-green-600">Tambah Jenis Obat</a>
 
                     <div class="overflow-x-auto">
                         <table class="min-w-full bg-white border border-gray-300">
@@ -25,27 +25,28 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($obat as $obat)
-                                    <tr class="border-b">
-                                        <td class="py-2 px-4">{{ $loop->iteration }}</td>
-                                        <td class="py-2 px-4">{{ $obat->nama }}</td>
-                                        <td class="py-2 px-4">{{ $obat->harga }}</td>
-                                        <td class="py-2 px-4">{{ $obat->pabrik }}</td>
-                                        <td class="py-2 px-4">{{ $jenis_obat->nama_jenis }}</td>
-                                        <td class="text-center">
-                                            <img src="{{ asset('/storage/obats/'.$obat->gambar) }}" class="rounded" style="width: 150px">
-                                        </td>
-                                        <td class="py-2 px-4 space-x-2">
-                                            <a href="{{ route('obat.show', $obat->id) }}" class="inline-block bg-gray-700 text-black px-3 py-1 rounded text-sm hover:bg-gray-800">Detail</a>
-                                            <a href="{{ route('obat.edit', $obat->id) }}" class="inline-block bg-blue-500 text-black px-3 py-1 rounded text-sm hover:bg-blue-600">Edit</a>
-                                            <form action="{{ route('obat.destroy', $obat->id) }}" method="POST" class="inline">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button onclick="return confirm('Apakah Anda Yakin?');" class="bg-red-500 text-black px-3 py-1 rounded text-sm hover:bg-red-600">Hapus</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @empty
+                                @forelse ($obat as $item)
+                                <tr class="border-b">
+                                    <td class="py-2 px-4">{{ $loop->iteration }}</td>
+                                    <td class="py-2 px-4">{{ $item->nama }}</td>
+                                    <td class="py-2 px-4">{{ $item->harga }}</td>
+                                    <td class="py-2 px-4">{{ $item->pabrik }}</td>
+                                    <td class="py-2 px-4">{{ $item->jenisObat->nama_jenis ?? '-' }}</td>
+                                    <td class="text-center">
+                                        <img src="{{ asset('/storage/obats/'.$item->gambar) }}" class="rounded" style="width: 150px">
+                                    </td>
+                                    <td class="py-2 px-4 space-x-2">
+                                        <a href="{{ route('obat.show', $item->id) }}" class="inline-block bg-gray-700 text-black px-3 py-1 rounded text-sm hover:bg-gray-800">Detail</a>
+                                        <a href="{{ route('obat.edit', $item->id) }}" class="inline-block bg-blue-500 text-black px-3 py-1 rounded text-sm hover:bg-blue-600">Edit</a>
+                                        <form action="{{ route('obat.destroy', $item->id) }}" method="POST" class="inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button onclick="return confirm('Apakah Anda Yakin?');" class="bg-red-500 text-black px-3 py-1 rounded text-sm hover:bg-red-600">Hapus</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @empty
+                            
                                     <tr>
                                         <td colspan="4" class="py-4 px-4 text-center text-red-500">Data Obat belum tersedia.</td>
                                     </tr>

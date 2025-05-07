@@ -24,7 +24,8 @@ class ObatController extends Controller
     public function create()
     {
         $jenis_obat = JenisObat::all();
-        return view('obat.index', compact('jenis_obat'));
+        $obat = Obat::all();
+        return view('obat.index', compact('jenis_obat', 'obat'));
     }
 
     /**
