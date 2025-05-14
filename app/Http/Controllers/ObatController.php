@@ -25,7 +25,7 @@ class ObatController extends Controller
     {
         $jenis_obat = JenisObat::all();
         $obat = Obat::all();
-        return view('obat.index', compact('jenis_obat', 'obat'));
+        return view('obat.create', compact('jenis_obat', 'obat'));
     }
 
     /**
@@ -81,7 +81,7 @@ class ObatController extends Controller
 
         ]);
 
-        if ($request->hasFile('foto')) {
+        if ($request->hasFile('gambar')) {
             $gambar = $request->file('gambar')->store('obats', 'public');
             $validated['gambar'] = $gambar;
         }

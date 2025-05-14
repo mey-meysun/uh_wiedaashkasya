@@ -25,14 +25,14 @@
 
                         <div class="mb-4">
                             <label for="pabrik" class="block text-sm font-medium text-gray-700">Pabrik</label>
-                            <input type="number" name="pabrik" id="pabrik" value="{{ $obat->pabrik }}" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+                            <input type="text" name="pabrik" id="pabrik" value="{{ $obat->pabrik }}" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
                         </div>
 
                         <div class="mb-4">
                             <label for="jenis" class="block text-sm font-medium text-gray-700">Jenis Obat</label>
                             <select name="jenis" id="jenis" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
                                 <option value="">-- Pilih Jenis --</option>
-                                @foreach ($jenisObats as $jenis)
+                                @foreach ($jenis_obats as $jenis)
                                     <option value="{{ $jenis->id }}" {{ $obat->jenis == $jenis->id ? 'selected' : '' }}>
                                         {{ $jenis->nama_jenis }}
                                     </option>

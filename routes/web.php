@@ -19,7 +19,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('jenis-obat', JenisObatController::class);
-Route::resource('obat', ObatController::class);
+Route::resource('/jenis-obat', JenisObatController::class);
+Route::resource('/obat', ObatController::class);
 
 require __DIR__.'/auth.php';

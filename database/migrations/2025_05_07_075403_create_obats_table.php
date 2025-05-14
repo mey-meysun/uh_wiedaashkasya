@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->integer('harga');
-            $table->integer('pabrik');
+            $table->string('pabrik');
             $table->foreignId('jenis')->constrained('jenis_obats')->onDelete('cascade');
             $table->string('gambar');
             $table->timestamps();
