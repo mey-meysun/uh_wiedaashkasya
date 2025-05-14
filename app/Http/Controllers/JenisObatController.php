@@ -12,7 +12,7 @@ class JenisObatController extends Controller
      */
     public function index()
     {
-        $jenis_obats = JenisObat::all();
+        $jenis_obats = JenisObat::paginate(10);
         return view('jenis-obat.index', compact('jenis_obats'));
     }
 

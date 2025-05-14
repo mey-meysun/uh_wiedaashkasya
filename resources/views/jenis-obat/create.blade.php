@@ -5,12 +5,8 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    <h2 class="text-xl font-semibold mb-4">Tambah Jenis</h2>
-    
+      <section class="bg-white dark:bg-gray-900">
+        <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
                     <form action="{{ route('jenis-obat.store') }}" method="POST" class="inline-block bg-blue-500 text-white px-3 py-1 rounded text-sm hover:bg-blue-600">
                         @csrf
                         <div class="mb-4">
@@ -28,8 +24,5 @@
                         </button>
                     </form>
                 </div>
-            </div>
-        </div>
-    </div>
-    
+            </section>
 </x-app-layout>

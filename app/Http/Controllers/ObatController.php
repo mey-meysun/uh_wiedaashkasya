@@ -14,7 +14,7 @@ class ObatController extends Controller
     public function index()
     {
         $jenis_obat = JenisObat::all();
-        $obat = Obat::all();
+        $obat = Obat::paginate(10);
         return view('obat.index', compact('obat', 'jenis_obat'));
     }
 
@@ -97,6 +97,6 @@ class ObatController extends Controller
     public function destroy(Obat $obat)
     {
         $obat->delete();
-        return redirect()->route('obat.index')->with(['success' => 'Data Berhasil Disimpan!']);
+        return redirect()->route('obat.index')->with(['success' => 'Data Berhasil Dihapus!']);
     }
 }
